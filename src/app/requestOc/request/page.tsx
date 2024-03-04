@@ -26,14 +26,14 @@ const Page = () => {
 
   interface AllReqInterface {
     _id: String;
-    mainHandData: [string],
-  offHandData: [string],
-  headData: [string],
-  armorData: [string],
-  shoeData: [string],
+    mainHandData: [string];
+    offHandData: [string];
+    headData: [string];
+    armorData: [string];
+    shoeData: [string];
   }
 
-  const router = useRouter()
+  const router = useRouter();
 
   const [opened, { open, close }] = useDisclosure(false);
 
@@ -56,7 +56,7 @@ const Page = () => {
     try {
       const req = await axios.post("/api/request/requestedOc", reqData);
 
-      router.push('/requestOc')
+      router.push("/requestOc");
       // console.log(req.data.data);
     } catch (error) {
       console.log("Error in fronted", error);
@@ -75,7 +75,6 @@ const Page = () => {
 
   const [allReqData, setAllReqData] = useState<AllReqInterface[]>([]);
 
-
   const getAllReqsData = async () => {
     try {
       const req = await axios.get("/api/request/requestedOcData");
@@ -92,10 +91,8 @@ const Page = () => {
   }, []);
 
   const updateData = async (data: any, addedTitle: any, name: any) => {
-
-    const isTitleInclude = data?.includes(addedTitle)
-    if(!isTitleInclude&& addedTitle != ""){
-      
+    const isTitleInclude = data?.includes(addedTitle);
+    if (!isTitleInclude && addedTitle != "") {
       data.push(addedTitle);
 
       try {
@@ -106,33 +103,26 @@ const Page = () => {
       } catch (error) {
         console.log("error", error);
       }
-  if(ref?.current)
-      ref.current.value = "";
-    } 
-
-
-   
+      if (ref?.current) ref.current.value = "";
+    }
   };
 
-  const deleteData =async (modalData:any, data:any, name:any) => {
-
+  const deleteData = async (modalData: any, data: any, name: any) => {
     let index = modalData?.indexOf(data);
 
     if (index !== -1) {
       modalData?.splice(index, 1);
-  }
+    }
 
-  try {
-    const res = await axios.put("/api/request/requestedOcData", {
-      name,
-      
-      allReq: allReqData[0],
-    });
-  } catch (error) {
-    console.log("error", error);
-  }
+    try {
+      const res = await axios.put("/api/request/requestedOcData", {
+        name,
 
-    
+        allReq: allReqData[0],
+      });
+    } catch (error) {
+      console.log("error", error);
+    }
 
     // try {
     //   const res = await axios.put("/api/request/requestedOcData", {
@@ -161,7 +151,7 @@ const Page = () => {
   const shoe = allReqData[0]?.shoeData;
 
   return (
-    <div className="bg-white min-h-screen relative">
+    <div className="bg-white min-h-screen relative text-gray-700">
       <div className="flex justify-center">
         <h1 className="text-2xl ">{user?.userName}</h1>
       </div>
@@ -227,7 +217,7 @@ const Page = () => {
         ))}
       </Modal>
 
-      <div className="">
+      <div className="box">
         <Box maw={340} mx="auto">
           <form
             onSubmit={form.onSubmit((request: RequestInterface, e: any) =>

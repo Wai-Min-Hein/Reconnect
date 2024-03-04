@@ -9,11 +9,7 @@ import axios from "axios";
 import RequestOcRender from "@/components/RequestOcRender";
 
 const RequesteOc = () => {
-
-
-  
   const user = useContext(Context);
-
 
   const userId = user?._id;
 
@@ -60,9 +56,9 @@ const RequesteOc = () => {
 
   return (
     <div className="bg-white">
-      <div className="flex flex-col justify-between h-screen py-3">
-          <h1 className="text-center text-2xl">My Request List</h1>
-          
+      <div className="flex flex-col justify-between h-screen py-3 text-gray-700">
+        <h1 className="text-center text-2xl">My Request List</h1>
+
         <div className="px-4 mt-4 flex-1 h-full overflow-auto">
           <Table.ScrollContainer minWidth={500}>
             <Table withTableBorder>

@@ -6,7 +6,7 @@ export async function GET(request: NextRequest) {
     const response = NextResponse.json({ message: "Logout duccessful"});
 
     response.cookies.set("token", '',{
-      httpOnly: true,
+      httpOnly: false,
       expires: new Date(0)
     });
     

@@ -31,3 +31,7 @@ body {
 .sideNav .mantine-Input-input{
   background-color: transparent !important;
 }
+
+.box .mantine-Select-option span {
+  color: green !important;
+}
