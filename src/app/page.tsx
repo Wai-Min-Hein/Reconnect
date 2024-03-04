@@ -31,7 +31,7 @@ const Login = () => {
       const reqBody = await axios.post("/api/users/login", user)
       router.push('/myDeaths')
 
-      localStorage.setItem('email', user.email)
+      // localStorage.setItem('email', user.email)
     
 
 

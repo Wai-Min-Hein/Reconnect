@@ -26,17 +26,13 @@ export const Context = createContext<User>(initialUser);
 const StateContext = ({ children }: ContextProviderType) => {
   const [user, setUser] = useState<User>(initialUser);
 
-  const cookies = useCookies()
+
+  const cookies = useCookies();
+
+  const token: any =JSON.stringify(cookies.get("token")) ;
 
 
   useEffect(() => {
-
-    const token: any = cookies.get('token')
-
-    console.log(token)
-    
-    
-
     const userData = async () => {
       try {
         const response = await axios.get("/api/users/me");
@@ -46,13 +42,19 @@ const StateContext = ({ children }: ContextProviderType) => {
       }
     };
 
-    
+    const userData2 = async () => {
+      try {
+        const response = await axios.post("/api/users/me", token);
+        setUser(response?.data.user);
+        console.log(response.data.user, 'user post method');
+      } catch (error) {
+        console.log("Token data cannot get from frontend");
+      }
+    };
 
-    if (user == initialUser) userData();
-    // else {
-    //   console.log(user, "fetched user data");
-    // }
-  }, [user]);
+    if (user == initialUser) 
+    userData2();
+  }, [user, token]);
 
   return <Context.Provider value={user}>{children}</Context.Provider>;
 };
