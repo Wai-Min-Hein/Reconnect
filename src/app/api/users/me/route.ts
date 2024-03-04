@@ -7,6 +7,8 @@ dbConnect();
 
 export async function GET(request: NextRequest) {
   try {
+    const req = request.json()
+
 
 
     const email = await getDataFromToken(request);

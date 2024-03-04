@@ -1,4 +1,3 @@
-
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -8,6 +7,7 @@ import "@mantine/core/styles.css";
 import SideBar from "@/components/SideBar";
 import StateContext, { Context } from "@/context/context";
 import LayoutProvider from "@/components/LayoutProvider";
+import { CookiesProvider } from "next-client-cookies/server";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,20 +17,16 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  children
+  children,
 }: {
   children: React.ReactNode;
 }) {
-
-
-
   return (
     <html lang="en">
       <body className={inter.className}>
-        
-        <LayoutProvider>
-          {children}
-        </LayoutProvider>
+        <CookiesProvider>
+          <LayoutProvider>{children}</LayoutProvider>
+        </CookiesProvider>
       </body>
     </html>
   );

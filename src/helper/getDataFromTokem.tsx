@@ -7,6 +7,8 @@ export async function getDataFromToken(request: NextRequest) {
   try {
     const token = request.cookies.get("token")?.value || "";
 
+    console.log(token)
+
 
     const decodedToken: any = jwt.verify(token, process?.env.PassSecret!);
 
