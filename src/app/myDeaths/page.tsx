@@ -35,6 +35,8 @@ const Mydeaths = () => {
 
   const user = useContext(Context);
 
+  console.log(user)
+
 
   const userId = user?._id;
   const UserName = user?.userName;
