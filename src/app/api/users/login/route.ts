@@ -46,7 +46,6 @@ export async function POST(request: NextRequest) {
       {
         id: user._id,
         email,
-        password,
       },
       process.env.PassSecret!,
       { expiresIn: "1d" }

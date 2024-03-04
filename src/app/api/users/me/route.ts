@@ -9,10 +9,10 @@ export async function GET(request: NextRequest) {
   try {
 
 
-    const id = await getDataFromToken(request);
+    const email = await getDataFromToken(request);
 
 
-    const user = await User.findOne({ id }).select(["-password", "-__v"]);
+    const user = await User.findOne({email}).select(["-password", "-__v"]);
 
     return NextResponse.json(
       { message: "Data accepted from token", user },

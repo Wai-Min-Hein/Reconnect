@@ -35,7 +35,9 @@ const Mydeaths = () => {
 
   const user = useContext(Context);
 
+
   const userId = user?._id;
+  const UserName = user?.userName;
 
   const isAdmin = user?.isAdmin;
 
@@ -195,7 +197,7 @@ const rows = approvedReq.map((req, index) => (
 
       <div className="px-4">
         <h1 className="text-4xl font-semibold text-center">
-          MasterZan | Tank: SIAM | DPS: SIAM | Heal: SIAM | Sup: SIAM | Bomb:
+          {UserName} | Tank: SIAM | DPS: SIAM | Heal: SIAM | Sup: SIAM | Bomb:
           BOMB_GUEST
         </h1>
         <div className="">

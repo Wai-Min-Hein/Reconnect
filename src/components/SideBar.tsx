@@ -15,6 +15,8 @@ const SideBar = () => {
 
   const user = useContext(Context);
 
+  const userName = user?.userName
+
   const isAdmin = user?.isAdmin;
 
   return (
@@ -32,7 +34,7 @@ const SideBar = () => {
         <h1 className="text-white text-xl font-semibold">Reconnecting</h1>
       </div>
 
-      <div className="flex items-start justify-start px-4 py-4 gap-2  border-b border-b-gray-300">
+      <div className="flex items-center justify-start px-4 py-4 gap-2  border-b border-b-gray-300">
         <div className="w-10 h-10 overflow-hidden rounded-full  bg-[#292e33] shadow-xl">
           <Image
             src={"/images/avatar.png"}
@@ -42,7 +44,7 @@ const SideBar = () => {
             className="relative"
           />
         </div>
-        <h6 className="text-gray-200">Master Zan</h6>
+        <h6 className="text-gray-200">{userName}</h6>
       </div>
 
       <nav className="sideNav px-2 mt-6">

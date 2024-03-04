@@ -19,13 +19,14 @@ const initialUser: User = {
   _id: "",
   userName: "",
   email: "",
-  isAdmin: true,
+  isAdmin: false,
 };
 
 export const Context = createContext<User>(initialUser);
 
 const StateContext = ({ children }: ContextProviderType) => {
   const [user, setUser] = useState<User>(initialUser);
+
 
   useEffect(() => {
     const userData = async () => {
@@ -44,9 +45,9 @@ const StateContext = ({ children }: ContextProviderType) => {
     
 
     if (user == initialUser) userData();
-    else {
-      console.log(user, "fetched user data");
-    }
+    // else {
+    //   console.log(user, "fetched user data");
+    // }
   }, [user]);
 
   return <Context.Provider value={user}>{children}</Context.Provider>;
