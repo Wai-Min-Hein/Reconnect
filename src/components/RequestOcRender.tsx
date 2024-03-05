@@ -43,7 +43,7 @@ const RequestOcRender = ({ req, user, index }: Props) => {
 
   useEffect(() => {
     if (status != req.reqStatus) updateStatus({ ...req, status });
-  }, [status, req]);
+  }, [status]);
 
   return (
     <Table.Tr>
