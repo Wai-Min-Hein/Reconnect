@@ -38,6 +38,8 @@ const RequesteOc = () => {
       const req = await axios.get("/api/request/getAllRequestedOc");
       const requests = req?.data?.requests;
 
+      console.log(requests, 'all request data from all users')
+
       setReqs(requests);
     } catch (error) {
       console.log("Error", error);
@@ -93,3 +95,8 @@ const RequesteOc = () => {
 };
 
 export default RequesteOc;
+
+
+
+
+

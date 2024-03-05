@@ -9,6 +9,8 @@ export async function GET(request:NextRequest) {
     try {
         const reqs = await RequestedOcS.find()
 
+        console.log(reqs, 'all requestded data')
+
         return NextResponse.json({success: true, requests: reqs}, {status: 200})
         
     } catch (error) {

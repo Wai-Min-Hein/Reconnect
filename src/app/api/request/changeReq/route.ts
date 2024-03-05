@@ -6,7 +6,7 @@ export async function PUT(request:NextRequest) {
         const res =await request.json()
 
 
-       const updatedReq = await RequestedOcS.findByIdAndUpdate(res?._id, {reqStatus: res?.status})
+       const updatedReq = await RequestedOcS.findByIdAndUpdate(res._id, {reqStatus: res.status})
 
        console.log(updatedReq)
 
