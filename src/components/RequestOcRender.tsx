@@ -35,15 +35,15 @@ const RequestOcRender = ({ req, user, index }: Props) => {
   const updateStatus = async (req: any) => {
     try {
       const requestBody = await axios.put("/api/request/changeReq", req);
-      console.log(requestBody);
+      console.log(requestBody.data.updatedReq);
     } catch (error) {
       console.log("Error", error);
     }
   };
 
-  useEffect(() => {
-    if (status != req.reqStatus) updateStatus({ ...req, status });
-  }, [status]);
+  // useEffect(() => {
+  //   updateStatus({ ...req, reqStatus:status });
+  // }, [status]);
 
   return (
     <Table.Tr>
@@ -59,9 +59,10 @@ const RequestOcRender = ({ req, user, index }: Props) => {
       <Table.Td className="inline-block w-40">
         {user?.isAdmin ? (
           <Select
+          
             data={["approved", "processing"]}
             defaultValue={req?.reqStatus}
-            onChange={(type: any) => setStatus(type)}
+            onChange={(type: any) => (setStatus(type), updateStatus({ ...req, reqStatus:status }))}
           />
         ) : (
           req?.reqStatus
