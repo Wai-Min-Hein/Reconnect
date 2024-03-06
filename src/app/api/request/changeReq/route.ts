@@ -8,13 +8,12 @@ export async function PUT(request:NextRequest) {
     try {
         const res =await request.json()
         const id = res._id
-        const reqStatus = res.reqStatus
-
+console.log(res.status)
         
         
         
         
-        const updatedReq = await RequestedOcS.findByIdAndUpdate(id, {reqStatus})
+        const updatedReq = await RequestedOcS.findByIdAndUpdate(id, {reqStatus: res.status})
 
 
         return NextResponse.json({message: 'Request status update success', updatedReq}, {status: 200})

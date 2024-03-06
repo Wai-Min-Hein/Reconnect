@@ -32,6 +32,7 @@ interface Props {
 const RequestOcRender = ({ req, user, index }: Props) => {
   const [status, setStatus] = useState(req?.reqStatus);
 
+
   const updateStatus = async (req: any) => {
     try {
       const requestBody = await axios.put("/api/request/changeReq", req);
@@ -41,9 +42,9 @@ const RequestOcRender = ({ req, user, index }: Props) => {
     }
   };
 
-  // useEffect(() => {
-  //   updateStatus({ ...req, reqStatus:status });
-  // }, [status]);
+  useEffect(() => {
+    updateStatus({ ...req, status });
+  }, [status]);
 
   return (
     <Table.Tr>
@@ -62,7 +63,7 @@ const RequestOcRender = ({ req, user, index }: Props) => {
           
             data={["approved", "processing"]}
             defaultValue={req?.reqStatus}
-            onChange={(type: any) => (setStatus(type), updateStatus({ ...req, reqStatus:status }))}
+            onChange={(type: any) => (setStatus(type))}
           />
         ) : (
           req?.reqStatus
